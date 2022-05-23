@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -20,7 +21,15 @@ public class ClientServiceImpl implements ClientService {
   }
 
   @Override
-  public Client findById(String id) {
+  public Client findById(String id) throws InterruptedException {
+    if(id.equals("22222")) {
+      throw new IllegalStateException("Cliente no encontrado");
+    }
+
+    if(id.equals("11111")) {
+      TimeUnit.SECONDS.sleep(5L);
+    }
+
     return clientRepository.findById(id).orElse(null);
   }
 

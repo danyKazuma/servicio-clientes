@@ -8,7 +8,7 @@ public interface ClientService{
 
     public List<Client> findAll();
 
-    public Client findById(String id);
+    public Client findById(String id) throws InterruptedException;
 
     public Client save(Client client);
 
